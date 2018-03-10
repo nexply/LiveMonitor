@@ -175,7 +175,7 @@ class mzitu:
         print('保存oldmurl')
 
     def run(self):
-        self.mkdir(rootpath='D:/QMDownload')
+        self.mkdir(rootpath='H:/')
         murls = self.getmurl()
 
         pool1 = Pool(50)
