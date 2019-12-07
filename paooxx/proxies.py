@@ -11,6 +11,7 @@ from multiprocessing.dummy import Pool
 
 import requests
 from fake_useragent import UserAgent
+
 from pyquery import PyQuery as pq
 
 ua = UserAgent()
@@ -51,7 +52,8 @@ def getip(num=10):
         # proxies={'http':'218.56.132.157:8080'}
 
         try:
-            respons = requests.get(url, headers=header, timeout=10).content  # , proxies=proxies
+            respons = requests.get(url, headers=header,
+                                   timeout=10).content  # , proxies=proxies
             respons = pq(respons)
         except:
             print('翻页错误：{}'.format(e))
@@ -78,7 +80,8 @@ def urltest(url):
     header['UserAgent'] = ua.random
     proxies = {'http': url}
     try:
-        respons = pq(requests.get('http://www.baidu.com', headers=header, proxies=proxies, timeout=9).content)
+        respons = pq(requests.get('http://www.baidu.com',
+                                  headers=header, proxies=proxies, timeout=9).content)
         res = respons('body').attr('link')
         print(res)
         if res != '#0000cc':
